@@ -14,4 +14,4 @@ This file was made by a Python script that translates the C++ documented
 code to Lua file with **placeholder** functions/variables. Im not going
 to release it because its really badly written.
 
-Please issue an issue (??) if you find inconsistencies
+Please issue an issue (??) if you find inconsistencies or fixed it yourself and submit a pull request
