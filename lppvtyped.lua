@@ -1,3 +1,11 @@
+---This was not included in the documentation<br>
+---Has something to do with sound
+---@type boolean
+LOOP = true
+---This was not included in the documentation<br>
+---Has something to do with sound
+---@type boolean
+NO_LOOP = false
 ---HTTPMethod: HTTP methods.<br>
 ---GET method
 ---@type integer
