@@ -93,9 +93,9 @@ getWifiLevel = function() return 0 end,
 ---```
 ---@param url string The url from where to download the file.
 ---@param file string Filename where to save the downloaded file.
----@param useragent string Custom useragent to use <b>(optional)</b>.
----@param method integer Method to use to perform the HTTP request <b>(optional)</b>.
----@param postdata string POST data to send with the HTTP request <b>(optional)</b>.
+---@param useragent? string Custom useragent to use <b>(optional)</b>.
+---@param method? integer Method to use to perform the HTTP request <b>(optional)</b>.
+---@param postdata? string POST data to send with the HTTP request <b>(optional)</b>.
 ---<br>NOTE: <b>postdata</b> will work only with <b>method</b> set to  HTTPMethod`POST_METHOD` POST_METHOD.
 ---<br>NOTE: If not specified,  HTTPMethod`GET_METHOD` GET_METHOD is used as default.
 downloadFile = function(url, file, useragent, method, postdata) return 0 end, 
@@ -106,9 +106,9 @@ downloadFile = function(url, file, useragent, method, postdata) return 0 end,
 ---```
 ---@param url string The url from where to download the file.
 ---@param file string Filename where to save the downloaded file.
----@param useragent string Custom useragent to use <b>(optional)</b>.
----@param method integer Method to use to perform the HTTP request <b>(optional)</b>.
----@param postdata string POST data to send with the HTTP request <b>(optional)</b>.
+---@param useragent? string Custom useragent to use <b>(optional)</b>.
+---@param method? integer Method to use to perform the HTTP request <b>(optional)</b>.
+---@param postdata? string POST data to send with the HTTP request <b>(optional)</b>.
 ---<br>NOTE: <b>postdata</b> will work only with <b>method</b> set to  HTTPMethod`POST_METHOD` POST_METHOD.
 ---<br>NOTE: If not specified,  HTTPMethod`GET_METHOD` GET_METHOD is used as default.
 downloadFileAsync = function(url, file, useragent, method, postdata) return 0 end, 
@@ -118,9 +118,9 @@ downloadFileAsync = function(url, file, useragent, method, postdata) return 0 en
 ---result = Network.requestString("http://www.website.com/file.txt")
 ---```
 ---@param url string The url where to send the HTTP request.
----@param useragent string Custom useragent to use <b>(optional)</b>.
----@param method integer Method to use to perform the HTTP request <b>(optional)</b>.
----@param postdata string POST data to send with the HTTP request <b>(optional)</b>.
+---@param useragent? string Custom useragent to use <b>(optional)</b>.
+---@param method? integer Method to use to perform the HTTP request <b>(optional)</b>.
+---@param postdata? string POST data to send with the HTTP request <b>(optional)</b>.
 ---@return string result The HTTP request result.
 ---<br>NOTE: <b>postdata</b> will work only with <b>method</b> set to  HTTPMethod`POST_METHOD` POST_METHOD.
 ---<br>NOTE: If not specified,  HTTPMethod`GET_METHOD` GET_METHOD is used as default.
@@ -131,9 +131,9 @@ requestString = function(url, useragent, method, postdata) return "" end,
 ---Network.requestStringAsync("http://www.website.com/file.txt")
 ---```
 ---@param url string The url where to send the HTTP request.
----@param useragent string Custom useragent to use <b>(optional)</b>.
----@param method integer Method to use to perform the HTTP request <b>(optional)</b>.
----@param postdata string POST data to send with the HTTP request <b>(optional)</b>.
+---@param useragent? string Custom useragent to use <b>(optional)</b>.
+---@param method? integer Method to use to perform the HTTP request <b>(optional)</b>.
+---@param postdata? string POST data to send with the HTTP request <b>(optional)</b>.
 ---<br>NOTE: <b>postdata</b> will work only with <b>method</b> set to  HTTPMethod`POST_METHOD` POST_METHOD.
 ---<br>NOTE: If not specified,  HTTPMethod`GET_METHOD` GET_METHOD is used as default.
 requestStringAsync = function(url, useragent, method, postdata) return 0 end, 
@@ -182,7 +182,7 @@ getSysKey = function(id, type) return 0 end,
 ---@param name string The key related to the value.
 ---@param type integer The type of the value.
 ---@param value integer The value to set.
----@param size integer The size of the value <b>(optional)</b>.
+---@param size? integer The size of the value <b>(optional)</b>.
 ---<br>NOTE: This function is available only in unsafe mode.
 setKey = function(category, name, type, value, size) return 0 end, 
 }
@@ -594,7 +594,7 @@ term = function() return 0 end,
 ---Video.open("app0:/video.mp4", false)
 ---```
 ---@param filename string Filepath of the file to reproduce.
----@param loop boolean If true, playback will loop <b>(optional)</b>.
+---@param loop? boolean If true, playback will loop <b>(optional)</b>.
 open = function(filename, loop) return 0 end, 
 ---Close the current video playback.
 --- Usage example:
@@ -741,7 +741,7 @@ Screen = {
 ---```
 ---Screen.clear()
 ---```
----@param clr integer Color of the screen after the clear <B>(optional)</B>.
+---@param clr? integer Color of the screen after the clear <B>(optional)</B>.
 ---<br>NOTE: If clr is passed, that color will be used for successive calls too.
 ---<br>NOTE: This function must be called during rendering phase (See `Graphics`).
 clear = function(clr) return 0 end, 
@@ -812,10 +812,10 @@ Keyboard = {
 ---```
 ---@param title string The keyboard title.
 ---@param text string The keyboard initial text.
----@param length integer The text maximum length <b>(optional)</b>.
----@param type integer The keyboard type <b>(optional)</b>.
----@param mode integer The keyboard mode <b>(optional)</b>.
----@param opt integer Optional keyboard features to use <b>(optional)</b>.
+---@param length? integer The text maximum length <b>(optional)</b>.
+---@param type? integer The keyboard type <b>(optional)</b>.
+---@param mode? integer The keyboard mode <b>(optional)</b>.
+---@param opt? integer Optional keyboard features to use <b>(optional)</b>.
 start = function(title, text, length, type, mode, opt) return 0 end, 
 ---Get keyboard state.
 --- Usage example:
@@ -856,7 +856,7 @@ Socket = {
 ---sock = Socket.createServerSocket(5000, TCP_SOCKET)
 ---```
 ---@param port integer Port to use.
----@param protocol integer Protocol to use <b>(optional)</b>.
+---@param protocol? integer Protocol to use <b>(optional)</b>.
 ---@return integer result The created socket id.
 ---<br>NOTE: If not specified,  NetProtocol`TCP_SOCKET` TCP_SOCKET is used as default.
 createServerSocket = function(port, protocol) return 0 end, 
@@ -867,7 +867,7 @@ createServerSocket = function(port, protocol) return 0 end,
 ---```
 ---@param host string Host to connect to.
 ---@param port integer Port to use.
----@param protocol integer Protocol to use <b>(optional)</b>.
+---@param protocol? integer Protocol to use <b>(optional)</b>.
 ---@return integer result A valid client socket id.
 ---<br>NOTE: If not specified,  NetProtocol`TCP_SOCKET` TCP_SOCKET is used as default.
 connect = function(host, port, protocol) return 0 end, 
@@ -1013,7 +1013,7 @@ Controls = {
 ---```
 ---pad = Controls.read()
 ---```
----@param port integer Device port to use <b>(optional)</b>.
+---@param port? integer Device port to use <b>(optional)</b>.
 ---@return integer result Bitmask of the pressed buttons.
 read = function(port) return 0 end, 
 ---Read left analog state.
@@ -1021,7 +1021,7 @@ read = function(port) return 0 end,
 ---```
 ---x, y = Controls.readLeftAnalog()
 ---```
----@param port integer Device port to use <b>(optional)</b>.
+---@param port? integer Device port to use <b>(optional)</b>.
 ---@return integer result X and Y values of left analog.
 readLeftAnalog = function(port) return 0 end, 
 ---Read right analog state.
@@ -1029,7 +1029,7 @@ readLeftAnalog = function(port) return 0 end,
 ---```
 ---x, y = Controls.readRightAnalog()
 ---```
----@param port integer Device port to use <b>(optional)</b>.
+---@param port? integer Device port to use <b>(optional)</b>.
 ---@return integer result X and Y values of right analog.
 readRightAnalog = function(port) return 0 end, 
 ---Read touchscreen state.
@@ -1766,7 +1766,7 @@ extractFromZipAsync = function(filename, file, destname) return 0 end,
 ---```
 ---@param path string The filename or path to compress.
 ---@param filename string The filename of the resulting zip file.
----@param ratio integer The compression ratio to use <b>(optional)</b>.
+---@param ratio? integer The compression ratio to use <b>(optional)</b>.
 ---<br>NOTE: <b>ratio</b> must be between 0 and 9.
 compressZip = function(path, filename, ratio) return 0 end, 
 ---Add a file or a folder in a ZIP file (synchronous).
@@ -1777,7 +1777,7 @@ compressZip = function(path, filename, ratio) return 0 end,
 ---@param path string The filename or path to compress.
 ---@param filename string The filename of the resulting zip file.
 ---@param parent string The parent folder inside the zip file where to place the path.
----@param ratio integer The compression ratio to use <b>(optional)</b>.
+---@param ratio? integer The compression ratio to use <b>(optional)</b>.
 ---<br>NOTE: <b>ratio</b> must be between 0 and 9.
 addToZip = function(path, filename, parent, ratio) return 0 end, 
 ---Get current state of an asynchronous task.
@@ -1805,8 +1805,8 @@ getAsyncResult = function() return "" end,
 ---System.takeScreenshot("ux0:/data/shot.jpg", FORMAT_JPG, 255)
 ---```
 ---@param filename string The filename of the screenshot output.
----@param format integer The format to use for the output file <b>(optional)</b>.
----@param ratio integer Compression ratio for JPG compression <b>(optional)</b>.
+---@param format? integer The format to use for the output file <b>(optional)</b>.
+---@param ratio? integer Compression ratio for JPG compression <b>(optional)</b>.
 ---<br>NOTE: <b>ratio</b> must be between 0 and 255.
 takeScreenshot = function(filename, format, ratio) return 0 end, 
 ---Execute an URI call.
@@ -1850,7 +1850,7 @@ isSafeMode = function() return false end,
 ---```
 ---@param text string The text of the system message.
 ---@param progressbar boolean Progressbar mode.
----@param buttons integer Buttons scheme to use <b>(optional)</b>.
+---@param buttons? integer Buttons scheme to use <b>(optional)</b>.
 ---<br>NOTE: If <b>progressbar</b> is true, <b>buttons</b> will not affect the system message.
 setMessage = function(text, progressbar, buttons) return 0 end, 
 ---Get current system message instance state.
@@ -2042,7 +2042,7 @@ open = function(filename) return 0 end,
 ---Sound.play(snd, NO_LOOP)
 ---```
 ---@param music integer A valid sound ID.
----@param loop boolean If true, playback will loop <b>(optional)</b>.
+---@param loop? boolean If true, playback will loop <b>(optional)</b>.
 play = function(music, loop) return 0 end, 
 ---Pause a sound.
 --- Usage example:
@@ -2199,7 +2199,7 @@ debugPrint = function(x, y, text, color) return 0 end,
 ---@param x integer X coordinate of the pixel position in pixels.
 ---@param y integer Y coordinate of the pixel position in pixels.
 ---@param color integer A valid color (See `Color`).
----@param image integer Image to draw on <b>(optional)</b>.
+---@param image? integer Image to draw on <b>(optional)</b>.
 ---<br>NOTE: If <b>image</b> is not provided, pixel will be drawn on screen.
 drawPixel = function(x, y, color, image) return 0 end, 
 ---Get a pixel color from a loaded image.
@@ -2262,7 +2262,7 @@ fillCircle = function(x, y, rad, color) return 0 end,
 ---```
 ---@param width integer Image width.
 ---@param height integer Image height.
----@param color integer A valid color (See `Color`) <b>(optional)</b>.
+---@param color? integer A valid color (See `Color`) <b>(optional)</b>.
 ---@return integer result A valid image ID.
 createImage = function(width, height, color) return 0 end, 
 ---Load a .png/.jpg/.bmp image.
@@ -2280,7 +2280,7 @@ loadImage = function(filename) return 0 end,
 ---```
 ---@param img integer A valid image ID.
 ---@param filename string The filename of the screenshot output.
----@param format integer The format to use for the output file <b>(optional)</b>.
+---@param format? integer The format to use for the output file <b>(optional)</b>.
 ---<br>NOTE: <b>FORMAT_JPG</b> is not supported.
 saveImage = function(img, filename, format) return 0 end, 
 ---Load a .png/.jpg/.bmp image (asynchronous).
@@ -2359,7 +2359,7 @@ getImageHeight = function(img) return 0 end,
 ---@param x integer X coordinate of the image in pixels.
 ---@param y integer Y coordinate of the image in pixels.
 ---@param img integer A valid image ID.
----@param color integer Image tint color (See `Color`) <b>(optional)</b>.
+---@param color? integer Image tint color (See `Color`) <b>(optional)</b>.
 drawImage = function(x, y, img, color) return 0 end, 
 ---Draw a rotated image.
 --- Usage example:
@@ -2370,7 +2370,7 @@ drawImage = function(x, y, img, color) return 0 end,
 ---@param y integer Y coordinate of the image in pixels.
 ---@param img integer A valid image ID.
 ---@param rad integer Rotation radius.
----@param color integer Image tint color (See `Color`) <b>(optional)</b>.
+---@param color? integer Image tint color (See `Color`) <b>(optional)</b>.
 drawRotateImage = function(x, y, img, rad, color) return 0 end, 
 ---Draw a scaled image.
 --- Usage example:
@@ -2382,7 +2382,7 @@ drawRotateImage = function(x, y, img, rad, color) return 0 end,
 ---@param img integer A valid image ID.
 ---@param x_scale integer Scale value for X parameter.
 ---@param y_scale integer Scale value for Y parameter.
----@param color integer Image tint color (See `Color`) <b>(optional)</b>.
+---@param color? integer Image tint color (See `Color`) <b>(optional)</b>.
 drawScaleImage = function(x, y, img, x_scale, y_scale, color) return 0 end, 
 ---Draw a part of an image.
 --- Usage example:
@@ -2396,7 +2396,7 @@ drawScaleImage = function(x, y, img, x_scale, y_scale, color) return 0 end,
 ---@param y_start integer Image Y coordinate for the partial drawing.
 ---@param width integer Partial drawing width.
 ---@param height integer Partial drawing height.
----@param color integer Image tint color (See `Color`) <b>(optional)</b>.
+---@param color? integer Image tint color (See `Color`) <b>(optional)</b>.
 drawPartialImage = function(x, y, img, x_start, y_start, width, height, color) return 0 end, 
 ---Draw an image with several effects.
 --- Usage example:
@@ -2413,7 +2413,7 @@ drawPartialImage = function(x, y, img, x_start, y_start, width, height, color) r
 ---@param rad integer Rotation radius.
 ---@param x_scale integer Scale value for X parameter.
 ---@param y_scale integer Scale value for Y parameter.
----@param color integer Image tint color (See `Color`) <b>(optional)</b>.
+---@param color? integer Image tint color (See `Color`) <b>(optional)</b>.
 drawImageExtended = function(x, y, img, x_start, y_start, width, height, rad, x_scale, y_scale, color) return 0 end, 
 ---Initialize a rescaler.
 --- Usage example:
@@ -2609,7 +2609,7 @@ termMainMenubar = function() return 0 end,
 ---end
 ---```
 ---@param label string The label to show.
----@param enabled boolean The menu status to set <b>(optional)</b>.
+---@param enabled? boolean The menu status to set <b>(optional)</b>.
 ---@return boolean result true if the menu is opened, false otherwise.
 initMenu = function(label, enabled) return false end, 
 ---Terminate a menu.
@@ -2628,8 +2628,8 @@ termMenu = function() return 0 end,
 ---end
 ---```
 ---@param label string The label to show.
----@param selected boolean The item checked status <b>(optional)</b>.
----@param enabled boolean The item status to set <b>(optional)</b>.
+---@param selected? boolean The item checked status <b>(optional)</b>.
+---@param enabled? boolean The item status to set <b>(optional)</b>.
 ---@return boolean result true if clicked, false otherwise.
 drawMenuItem = function(label, selected, enabled) return false end, 
 ---Draw a text.
@@ -2638,7 +2638,7 @@ drawMenuItem = function(label, selected, enabled) return false end,
 ---Gui.drawText("Hello World", Color.new(255, 255, 0))
 ---```
 ---@param label string The label to show.
----@param color integer A valid color (See `Color`) <b>(optional)</b>.
+---@param color? integer A valid color (See `Color`) <b>(optional)</b>.
 drawText = function(label, color) return 0 end, 
 ---Draw a greyed out text.
 --- Usage example:
@@ -2662,8 +2662,8 @@ drawWrappedText = function(label) return 0 end,
 ---end
 ---```
 ---@param label string The label to show.
----@param width integer The width of the button <b>(optional)</b>.
----@param height integer The height of the button <b>(optional)</b>.
+---@param width? integer The width of the button <b>(optional)</b>.
+---@param height? integer The height of the button <b>(optional)</b>.
 ---@return boolean result true if the button has been clicked, false otherwise.
 drawButton = function(label, width, height) return false end, 
 ---Draw a small button.
@@ -2755,9 +2755,9 @@ drawTooltip = function(label) return 0 end,
 ---@param val_min integer The minimum value settable through the slider.
 ---@param val_max integer The maximum value settable through the slider.
 ---@param val1 integer The first value to handle with the slider.
----@param val2 integer The second value to handle with the slider <b>(optional)</b>.
----@param val3 integer The third value to handle with the slider <b>(optional)</b>.
----@param val4 integer The forth value to handle with the slider <b>(optional)</b>.
+---@param val2? integer The second value to handle with the slider <b>(optional)</b>.
+---@param val3? integer The third value to handle with the slider <b>(optional)</b>.
+---@param val4? integer The forth value to handle with the slider <b>(optional)</b>.
 ---@return integer result The updated values after the frame execution.
 drawIntSlider = function(label, val_min, val_max, val1, val2, val3, val4) return 0 end, 
 ---Draw a combobox.
@@ -2793,7 +2793,7 @@ drawListBox = function(label, index, elements) return 0 end,
 ---```
 ---@param label string The label to show.
 ---@param color integer The currently picked color (See `Color`)
----@param alpha boolean If true, alpha value will be pickable, not otherwise. <b>(optional)</b>.
+---@param alpha? boolean If true, alpha value will be pickable, not otherwise. <b>(optional)</b>.
 ---@return integer result The updated picked color.
 drawColorPicker = function(label, color, alpha) return 0 end, 
 ---Draw a progressbar.
@@ -2803,8 +2803,8 @@ drawColorPicker = function(label, color, alpha) return 0 end,
 ---end
 ---```
 ---@param fraction integer Progress value to show in 0.0 - 1.0 range.
----@param w integer Width of the element in pixels <b>(optional)</b>.
----@param h integer Height of the element in pixels <b>(optional)</b>.
+---@param w? integer Width of the element in pixels <b>(optional)</b>.
+---@param h? integer Height of the element in pixels <b>(optional)</b>.
 drawProgressbar = function(fraction, w, h) return 0 end, 
 ---Draw an image in the Gui subsystem.
 --- Usage example:
@@ -2813,13 +2813,13 @@ drawProgressbar = function(fraction, w, h) return 0 end,
 ---Gui.drawImage(icon, 32, 32, 0, 0, 20, 20)
 ---```
 ---@param img integer A valid image ID.
----@param width integer Width in pixels of the widget <b>(optional)</b>.
----@param height integer Height in pixels of the widget <b>(optional)</b>.
----@param img_x integer Source image X coordinate <b>(optional)</b>.
----@param img_y integer Source image Y coordinate <b>(optional)</b>.
----@param img_w integer Source image width <b>(optional)</b>.
----@param img_h integer Source image height <b>(optional)</b>.
----@param color integer Image tint color (See `Color`) <b>(optional)</b>.
+---@param width? integer Width in pixels of the widget <b>(optional)</b>.
+---@param height? integer Height in pixels of the widget <b>(optional)</b>.
+---@param img_x? integer Source image X coordinate <b>(optional)</b>.
+---@param img_y? integer Source image Y coordinate <b>(optional)</b>.
+---@param img_w? integer Source image width <b>(optional)</b>.
+---@param img_h? integer Source image height <b>(optional)</b>.
+---@param color? integer Image tint color (See `Color`) <b>(optional)</b>.
 drawImage = function(img, width, height, img_x, img_y, img_w, img_h, color) return 0 end, 
 ---Set next widget position.
 --- Usage example:
@@ -2915,7 +2915,7 @@ unloadModel = function(model) return 0 end,
 ---@param angleX integer X rotation value of the model.
 ---@param angleY integer Y rotation value of the model.
 ---@param angleZ integer Z rotation value of the model.
----@param unbind boolean Draw the model unbinded from camera instance <b>(optional)</b>.
+---@param unbind? boolean Draw the model unbinded from camera instance <b>(optional)</b>.
 ---<br>NOTE: If not specified, <b>unbind</b> param will be set as <b>false</b>.
 drawModel = function(model, x, y, z, angleX, angleY, angleZ, unbind) return 0 end, 
 ---Set a given texture for a model.
