@@ -96,8 +96,8 @@ getWifiLevel = function() return 0 end,
 ---@param useragent string Custom useragent to use <b>(optional)</b>.
 ---@param method integer Method to use to perform the HTTP request <b>(optional)</b>.
 ---@param postdata string POST data to send with the HTTP request <b>(optional)</b>.
----<br>NOTE: <b>postdata</b> will work only with <b>method</b> set to  HTTPMethod::POST_METHOD POST_METHOD.
----<br>NOTE: If not specified,  HTTPMethod::GET_METHOD GET_METHOD is used as default.
+---<br>NOTE: <b>postdata</b> will work only with <b>method</b> set to  HTTPMethod`POST_METHOD` POST_METHOD.
+---<br>NOTE: If not specified,  HTTPMethod`GET_METHOD` GET_METHOD is used as default.
 downloadFile = function(url, file, useragent, method, postdata) return 0 end, 
 ---Download a file via HTTP protocol (asynchronous).
 --- Usage example:
@@ -109,8 +109,8 @@ downloadFile = function(url, file, useragent, method, postdata) return 0 end,
 ---@param useragent string Custom useragent to use <b>(optional)</b>.
 ---@param method integer Method to use to perform the HTTP request <b>(optional)</b>.
 ---@param postdata string POST data to send with the HTTP request <b>(optional)</b>.
----<br>NOTE: <b>postdata</b> will work only with <b>method</b> set to  HTTPMethod::POST_METHOD POST_METHOD.
----<br>NOTE: If not specified,  HTTPMethod::GET_METHOD GET_METHOD is used as default.
+---<br>NOTE: <b>postdata</b> will work only with <b>method</b> set to  HTTPMethod`POST_METHOD` POST_METHOD.
+---<br>NOTE: If not specified,  HTTPMethod`GET_METHOD` GET_METHOD is used as default.
 downloadFileAsync = function(url, file, useragent, method, postdata) return 0 end, 
 ---Get an HTTP request result (synchronous).
 --- Usage example:
@@ -122,8 +122,8 @@ downloadFileAsync = function(url, file, useragent, method, postdata) return 0 en
 ---@param method integer Method to use to perform the HTTP request <b>(optional)</b>.
 ---@param postdata string POST data to send with the HTTP request <b>(optional)</b>.
 ---@return string result The HTTP request result.
----<br>NOTE: <b>postdata</b> will work only with <b>method</b> set to  HTTPMethod::POST_METHOD POST_METHOD.
----<br>NOTE: If not specified,  HTTPMethod::GET_METHOD GET_METHOD is used as default.
+---<br>NOTE: <b>postdata</b> will work only with <b>method</b> set to  HTTPMethod`POST_METHOD` POST_METHOD.
+---<br>NOTE: If not specified,  HTTPMethod`GET_METHOD` GET_METHOD is used as default.
 requestString = function(url, useragent, method, postdata) return "" end, 
 ---Get an HTTP request result (asynchronous).
 --- Usage example:
@@ -134,8 +134,8 @@ requestString = function(url, useragent, method, postdata) return "" end,
 ---@param useragent string Custom useragent to use <b>(optional)</b>.
 ---@param method integer Method to use to perform the HTTP request <b>(optional)</b>.
 ---@param postdata string POST data to send with the HTTP request <b>(optional)</b>.
----<br>NOTE: <b>postdata</b> will work only with <b>method</b> set to  HTTPMethod::POST_METHOD POST_METHOD.
----<br>NOTE: If not specified,  HTTPMethod::GET_METHOD GET_METHOD is used as default.
+---<br>NOTE: <b>postdata</b> will work only with <b>method</b> set to  HTTPMethod`POST_METHOD` POST_METHOD.
+---<br>NOTE: If not specified,  HTTPMethod`GET_METHOD` GET_METHOD is used as default.
 requestStringAsync = function(url, useragent, method, postdata) return 0 end, 
 }
 ---RegType: Registry types.<br>
@@ -345,7 +345,7 @@ Camera = {
 ---@param resolution integer Output resolution.
 ---@param framerate integer Output framerate.
 ---<br>NOTE: <b>framerate</b> must be between 3 and 120.
----<br>NOTE: <b>framerate</b> can be set to 120 only with  CameraRes::QVGA_RES QVGA_RES, CameraRes::QQVGA_RES QQVGA_RES or  CameraRes::CIF_RES CIF_RES as <b>resolution</b>.
+---<br>NOTE: <b>framerate</b> can be set to 120 only with  CameraRes`QVGA_RES` QVGA_RES, CameraRes`QQVGA_RES` QQVGA_RES or  CameraRes`CIF_RES` CIF_RES as <b>resolution</b>.
 init = function(type, resolution, framerate) return 0 end, 
 ---Terminate camera hardware.
 --- Usage example:
@@ -611,7 +611,7 @@ close = function() return 0 end,
 ---end
 ---```
 ---@return integer result The current video frame, 0 if no frame is available.
----<br>NOTE: Returned image became invalid when ::Video.term is called.
+---<br>NOTE: Returned image became invalid when `Video.term` is called.
 getOutput = function() return 0 end, 
 ---Pause current video playback.
 --- Usage example:
@@ -692,15 +692,21 @@ closeSubs = function() return 0 end,
 ---@return string result Subtitles matching current video playtime from the opened subtitles file.
 getSubs = function() return "" end, 
 }
----\defgroup Color
 ---Module that handles colors and their management.
 Color = {
+---Create a new color
+---@param r integer Red value
+---@param g integer Green value
+---@param b integer Blue value
+---@param a? integer Alpha Value (optional)
+---@return integer result The combined RGBA value
+new = function (r, g, b, a) return 0 end,
 ---Return the R channel value of a color.
 --- Usage example:
 ---```
 ---r = Color.getR(my_color)
 ---```
----@param clr integer A color created with ::Color.new.
+---@param clr integer A color created with `Color.new`.
 ---@return integer result The R channel value of the color.
 getR = function(clr) return 0 end, 
 ---Return the G channel value of a color.
@@ -708,7 +714,7 @@ getR = function(clr) return 0 end,
 ---```
 ---g = Color.getG(my_color)
 ---```
----@param clr integer A color created with ::Color.new.
+---@param clr integer A color created with `Color.new`.
 ---@return integer result The G channel value of the color.
 getG = function(clr) return 0 end, 
 ---Return the B channel value of a color.
@@ -716,7 +722,7 @@ getG = function(clr) return 0 end,
 ---```
 ---b = Color.getB(my_color)
 ---```
----@param clr integer A color created with ::Color.new.
+---@param clr integer A color created with `Color.new`.
 ---@return integer result The B channel value of the color.
 getB = function(clr) return 0 end, 
 ---Return the A channel value of a color.
@@ -724,11 +730,10 @@ getB = function(clr) return 0 end,
 ---```
 ---a = Color.getA(my_color)
 ---```
----@param clr integer A color created with ::Color.new.
+---@param clr integer A color created with `Color.new`.
 ---@return integer result The A channel value of the color.
 getA = function(clr) return 0 end, 
 }
----\defgroup Screen
 ---Module that handles basic screen related stuffs.
 Screen = {
 ---Clear the screen framebuffer.
@@ -738,7 +743,7 @@ Screen = {
 ---```
 ---@param clr integer Color of the screen after the clear <B>(optional)</B>.
 ---<br>NOTE: If clr is passed, that color will be used for successive calls too.
----<br>NOTE: This function must be called during rendering phase (See ::Graphics).
+---<br>NOTE: This function must be called during rendering phase (See `Graphics`).
 clear = function(clr) return 0 end, 
 ---Flip the screen.
 --- Usage example:
@@ -753,7 +758,7 @@ flip = function() return 0 end,
 ---```
 ---@param x integer X coordinate of the pixel.
 ---@param y integer Y coordinate of the pixel.
----@return integer result The pixel color value (See ::Color).
+---@return integer result The pixel color value (See `Color`).
 getPixel = function(x, y) return 0 end, 
 ---Wait screen vertical synchronization (VSync).
 --- Usage example:
@@ -853,7 +858,7 @@ Socket = {
 ---@param port integer Port to use.
 ---@param protocol integer Protocol to use <b>(optional)</b>.
 ---@return integer result The created socket id.
----<br>NOTE: If not specified,  NetProtocol::TCP_SOCKET TCP_SOCKET is used as default.
+---<br>NOTE: If not specified,  NetProtocol`TCP_SOCKET` TCP_SOCKET is used as default.
 createServerSocket = function(port, protocol) return 0 end, 
 ---Connect to a server.
 --- Usage example:
@@ -864,7 +869,7 @@ createServerSocket = function(port, protocol) return 0 end,
 ---@param port integer Port to use.
 ---@param protocol integer Protocol to use <b>(optional)</b>.
 ---@return integer result A valid client socket id.
----<br>NOTE: If not specified,  NetProtocol::TCP_SOCKET TCP_SOCKET is used as default.
+---<br>NOTE: If not specified,  NetProtocol`TCP_SOCKET` TCP_SOCKET is used as default.
 connect = function(host, port, protocol) return 0 end, 
 ---Send data via socket.
 --- Usage example:
@@ -1070,7 +1075,7 @@ rumble = function(port, small, large) return 0 end,
 ---Controls.setLightbar(0, Color.new(255, 255, 255))
 ---```
 ---@param port integer Device port to use.
----@param color integer An RGBA color value (See ::Color).
+---@param color integer An RGBA color value (See `Color`).
 setLightbar = function(port, color) return 0 end, 
 ---Locks default PS button functionality.
 --- Usage example:
@@ -1111,7 +1116,7 @@ headsetStatus = function() return false end,
 ---accepted = yes
 ---end
 ---```
----@return integer result  Ctrl::SCE_CTRL_CROSS SCE_CTRL_CROSS or  Ctrl::SCE_CTRL_CIRCLE SCE_CTRL_CIRCLE.
+---@return integer result  Ctrl`SCE_CTRL_CROSS` SCE_CTRL_CROSS or  Ctrl`SCE_CTRL_CIRCLE` SCE_CTRL_CIRCLE.
 getEnterButton = function() return 0 end, 
 ---Enable gyroscope sensor.
 --- Usage example:
@@ -1138,7 +1143,6 @@ disableGyro = function() return 0 end,
 ---```
 disableAccel = function() return 0 end, 
 }
----\defgroup Font
 ---Module that handles font writing stuffs.
 Font = {
 ---Load a .ttf/.pgf/.pvf/.woff/.pfa/.pfb/.fnt/.bdf font file.
@@ -1191,34 +1195,34 @@ getTextHeight = function(font, text) return 0 end,
 ---@param x integer X starting coordinate for the print.
 ---@param y integer Y starting coordinate for the print.
 ---@param text string Text to print.
----@param color integer Color of the text (See ::Color).
+---@param color integer Color of the text (See `Color`).
 print = function(font, x, y, text, color) return 0 end, 
 }
----IOFlags: I/O attributes to use with ::System.openFile.<br>
+---IOFlags: I/O attributes to use with `System.openFile`.<br>
 ---Read attribute.
 ---@type integer
 FREAD = 0
----IOFlags: I/O attributes to use with ::System.openFile.<br>
+---IOFlags: I/O attributes to use with `System.openFile`.<br>
 ---Write attribute.
 ---@type integer
 FWRITE = 0
----IOFlags: I/O attributes to use with ::System.openFile.<br>
+---IOFlags: I/O attributes to use with `System.openFile`.<br>
 ---Read/Write attribute.
 ---@type integer
 FRDWR = 0
----IOFlags: I/O attributes to use with ::System.openFile.<br>
+---IOFlags: I/O attributes to use with `System.openFile`.<br>
 ---Create/Write attribute.
 ---@type integer
 FCREATE = 0
----IOSeek: I/O seek modes to use with ::System.seekFile.<br>
+---IOSeek: I/O seek modes to use with `System.seekFile`.<br>
 ---Starts from the begin of the file.
 ---@type integer
 SET = 0
----IOSeek: I/O seek modes to use with ::System.seekFile.<br>
+---IOSeek: I/O seek modes to use with `System.seekFile`.<br>
 ---Starts from current position.
 ---@type integer
 CUR = 0
----IOSeek: I/O seek modes to use with ::System.seekFile.<br>
+---IOSeek: I/O seek modes to use with `System.seekFile`.<br>
 ---Starts from the end of the file.
 ---@type integer
 END = 0
@@ -1234,35 +1238,35 @@ SCREEN_OFF_TIMER = 0
 ---Automatic screen dimming.
 ---@type integer
 SCREEN_DIMMING_TIMER = 0
----ImgFmt: Image format modes to use with ::System.takeScreenshot.<br>
+---ImgFmt: Image format modes to use with `System.takeScreenshot`.<br>
 ---32bpp BMP format.
 ---@type integer
 FORMAT_BMP = 0
----ImgFmt: Image format modes to use with ::System.takeScreenshot.<br>
+---ImgFmt: Image format modes to use with `System.takeScreenshot`.<br>
 ---JPG format.
 ---@type integer
 FORMAT_JPG = 0
----ImgFmt: Image format modes to use with ::System.takeScreenshot.<br>
+---ImgFmt: Image format modes to use with `System.takeScreenshot`.<br>
 ---8bpp paletted PNG format.
 ---@type integer
 FORMAT_PNG = 0
----BtnMode: Buttons schemes for ::System.setMessage.<br>
+---BtnMode: Buttons schemes for `System.setMessage`.<br>
 ---No buttons.
 ---@type integer
 BUTTON_NONE = 0
----BtnMode: Buttons schemes for ::System.setMessage.<br>
+---BtnMode: Buttons schemes for `System.setMessage`.<br>
 ---OK button only.
 ---@type integer
 BUTTON_OK = 0
----BtnMode: Buttons schemes for ::System.setMessage.<br>
+---BtnMode: Buttons schemes for `System.setMessage`.<br>
 ---CANCEL button only.
 ---@type integer
 BUTTON_CANCEL = 0
----BtnMode: Buttons schemes for ::System.setMessage.<br>
+---BtnMode: Buttons schemes for `System.setMessage`.<br>
 ---OK and CANCEL buttons.
 ---@type integer
 BUTTON_OK_CANCEL = 0
----BtnMode: Buttons schemes for ::System.setMessage.<br>
+---BtnMode: Buttons schemes for `System.setMessage`.<br>
 ---YES and NO buttons.
 ---@type integer
 BUTTON_YES_NO = 0
@@ -1302,7 +1306,7 @@ openFile = function(filename, flags) return 0 end,
 ---```
 ---System.writeFile(handle, "Test", 4)
 ---```
----@param handle integer A file handle opened with ::System.openFile.
+---@param handle integer A file handle opened with `System.openFile`.
 ---@param text string The text to write on file.
 ---@param len integer Length of the text.
 writeFile = function(handle, text, len) return 0 end, 
@@ -1311,7 +1315,7 @@ writeFile = function(handle, text, len) return 0 end,
 ---```
 ---text = System.readFile(handle, 4)
 ---```
----@param handle integer A file handle opened with ::System.openFile.
+---@param handle integer A file handle opened with `System.openFile`.
 ---@param len integer Length of the string to read in bytes.
 ---@return string result The read string.
 readFile = function(handle, len) return "" end, 
@@ -1320,7 +1324,7 @@ readFile = function(handle, len) return "" end,
 ---```
 ---System.seekFile(handle, 0, END)
 ---```
----@param handle integer A file handle opened with ::System.openFile.
+---@param handle integer A file handle opened with `System.openFile`.
 ---@param pos integer Position to set.
 ---@param seek integer Start point for the position.
 seekFile = function(handle, pos, seek) return 0 end, 
@@ -1329,7 +1333,7 @@ seekFile = function(handle, pos, seek) return 0 end,
 ---```
 ---size = System.sizeFile(handle)
 ---```
----@param handle integer A file handle opened with ::System.openFile.
+---@param handle integer A file handle opened with `System.openFile`.
 ---@return integer result Filesize in bytes.
 sizeFile = function(handle) return 0 end, 
 ---Extract info of a file/directory.
@@ -1355,7 +1359,7 @@ statFile = function(filename) return {} end,
 ---is_directory = info.directory
 ---filesize = info.size
 ---```
----@param handle integer A file handle opened with ::System.openFile.
+---@param handle integer A file handle opened with `System.openFile`.
 ---@return table result A table with a proper set of info (Look at the sample above).
 statOpenedFile = function(handle) return {} end, 
 ---Close an opened file.
@@ -1363,7 +1367,7 @@ statOpenedFile = function(handle) return {} end,
 ---```
 ---System.closeFile(handle)
 ---```
----@param handle integer A file handle opened with ::System.openFile.
+---@param handle integer A file handle opened with `System.openFile`.
 closeFile = function(handle) return 0 end, 
 ---Check if a file exists.
 --- Usage example:
@@ -1967,7 +1971,6 @@ unloadUserPlugin = function(plug_id) return 0 end,
 ---<br>NOTE: This function is available only in unsafe mode.
 unmountMountpoint = function(mnt) return 0 end, 
 }
----\defgroup Database
 ---Module that handles SQLite databases management.
 Database = {
 ---Open/Create an SQLite database.
@@ -2115,7 +2118,6 @@ getAuthor = function(music) return "" end,
 ---@param id integer A valid shutter sound ID.
 playShutter = function(id) return 0 end, 
 }
----\defgroup Mic
 ---Module that handles microphone.
 Mic = {
 ---Start a microphone recording phase.
@@ -2157,11 +2159,11 @@ resume = function() return 0 end,
 ---@return boolean result true if recording, false otherwise.
 isRecording = function() return false end, 
 }
----ImageFilter: Image filters to use with ::Graphics.setImageFilters.<br>
+---ImageFilter: Image filters to use with `Graphics.setImageFilters`.<br>
 ---Point filter
 ---@type integer
 FILTER_POINT = 0
----ImageFilter: Image filters to use with ::Graphics.setImageFilters.<br>
+---ImageFilter: Image filters to use with `Graphics.setImageFilters`.<br>
 ---Linear filter
 ---@type integer
 FILTER_LINEAR = 0
@@ -2187,7 +2189,7 @@ termBlend = function() return 0 end,
 ---@param x integer X coordinate of the text position in pixels.
 ---@param y integer Y coordinate of the text position in pixels.
 ---@param text string Text to print.
----@param color integer A valid color (See ::Color).
+---@param color integer A valid color (See `Color`).
 debugPrint = function(x, y, text, color) return 0 end, 
 ---Draw a pixel.
 --- Usage example:
@@ -2196,7 +2198,7 @@ debugPrint = function(x, y, text, color) return 0 end,
 ---```
 ---@param x integer X coordinate of the pixel position in pixels.
 ---@param y integer Y coordinate of the pixel position in pixels.
----@param color integer A valid color (See ::Color).
+---@param color integer A valid color (See `Color`).
 ---@param image integer Image to draw on <b>(optional)</b>.
 ---<br>NOTE: If <b>image</b> is not provided, pixel will be drawn on screen.
 drawPixel = function(x, y, color, image) return 0 end, 
@@ -2208,7 +2210,7 @@ drawPixel = function(x, y, color, image) return 0 end,
 ---@param x integer X coordinate of the pixel.
 ---@param y integer Y coordinate of the pixel.
 ---@param img integer A valid image ID.
----@return integer result The pixel color value (See ::Color).
+---@return integer result The pixel color value (See `Color`).
 getPixel = function(x, y, img) return 0 end, 
 ---Draw a line.
 --- Usage example:
@@ -2219,7 +2221,7 @@ getPixel = function(x, y, img) return 0 end,
 ---@param x2 integer Ending X coordinate of the line in pixels.
 ---@param y1 integer Starting Y coordinate of the line in pixels.
 ---@param y2 integer Ending Y coordinate of the line in pixels.
----@param color integer A valid color (See ::Color).
+---@param color integer A valid color (See `Color`).
 drawLine = function(x1, x2, y1, y2, color) return 0 end, 
 ---Draw a rectangle.
 --- Usage example:
@@ -2230,7 +2232,7 @@ drawLine = function(x1, x2, y1, y2, color) return 0 end,
 ---@param x2 integer Ending X coordinate of the rectangle in pixels.
 ---@param y1 integer Starting Y coordinate of the rectangle in pixels.
 ---@param y2 integer Ending Y coordinate of the rectangle in pixels.
----@param color integer A valid color (See ::Color).
+---@param color integer A valid color (See `Color`).
 fillRect = function(x1, x2, y1, y2, color) return 0 end, 
 ---Draw an empty rectangle.
 --- Usage example:
@@ -2241,7 +2243,7 @@ fillRect = function(x1, x2, y1, y2, color) return 0 end,
 ---@param x2 integer Ending X coordinate of the rectangle in pixels.
 ---@param y1 integer Starting Y coordinate of the rectangle in pixels.
 ---@param y2 integer Ending Y coordinate of the rectangle in pixels.
----@param color integer A valid color (See ::Color).
+---@param color integer A valid color (See `Color`).
 fillEmptyRect = function(x1, x2, y1, y2, color) return 0 end, 
 ---Draw a circle.
 --- Usage example:
@@ -2251,7 +2253,7 @@ fillEmptyRect = function(x1, x2, y1, y2, color) return 0 end,
 ---@param x integer X coordinate of the circle in pixels.
 ---@param y integer Y coordinate of the circle in pixels.
 ---@param rad integer Radius size of the circle.
----@param color integer A valid color (See ::Color).
+---@param color integer A valid color (See `Color`).
 fillCircle = function(x, y, rad, color) return 0 end, 
 ---Create an empty image.
 --- Usage example:
@@ -2260,7 +2262,7 @@ fillCircle = function(x, y, rad, color) return 0 end,
 ---```
 ---@param width integer Image width.
 ---@param height integer Image height.
----@param color integer A valid color (See ::Color) <b>(optional)</b>.
+---@param color integer A valid color (See `Color`) <b>(optional)</b>.
 ---@return integer result A valid image ID.
 createImage = function(width, height, color) return 0 end, 
 ---Load a .png/.jpg/.bmp image.
@@ -2357,7 +2359,7 @@ getImageHeight = function(img) return 0 end,
 ---@param x integer X coordinate of the image in pixels.
 ---@param y integer Y coordinate of the image in pixels.
 ---@param img integer A valid image ID.
----@param color integer Image tint color (See ::Color) <b>(optional)</b>.
+---@param color integer Image tint color (See `Color`) <b>(optional)</b>.
 drawImage = function(x, y, img, color) return 0 end, 
 ---Draw a rotated image.
 --- Usage example:
@@ -2368,7 +2370,7 @@ drawImage = function(x, y, img, color) return 0 end,
 ---@param y integer Y coordinate of the image in pixels.
 ---@param img integer A valid image ID.
 ---@param rad integer Rotation radius.
----@param color integer Image tint color (See ::Color) <b>(optional)</b>.
+---@param color integer Image tint color (See `Color`) <b>(optional)</b>.
 drawRotateImage = function(x, y, img, rad, color) return 0 end, 
 ---Draw a scaled image.
 --- Usage example:
@@ -2380,7 +2382,7 @@ drawRotateImage = function(x, y, img, rad, color) return 0 end,
 ---@param img integer A valid image ID.
 ---@param x_scale integer Scale value for X parameter.
 ---@param y_scale integer Scale value for Y parameter.
----@param color integer Image tint color (See ::Color) <b>(optional)</b>.
+---@param color integer Image tint color (See `Color`) <b>(optional)</b>.
 drawScaleImage = function(x, y, img, x_scale, y_scale, color) return 0 end, 
 ---Draw a part of an image.
 --- Usage example:
@@ -2394,7 +2396,7 @@ drawScaleImage = function(x, y, img, x_scale, y_scale, color) return 0 end,
 ---@param y_start integer Image Y coordinate for the partial drawing.
 ---@param width integer Partial drawing width.
 ---@param height integer Partial drawing height.
----@param color integer Image tint color (See ::Color) <b>(optional)</b>.
+---@param color integer Image tint color (See `Color`) <b>(optional)</b>.
 drawPartialImage = function(x, y, img, x_start, y_start, width, height, color) return 0 end, 
 ---Draw an image with several effects.
 --- Usage example:
@@ -2411,7 +2413,7 @@ drawPartialImage = function(x, y, img, x_start, y_start, width, height, color) r
 ---@param rad integer Rotation radius.
 ---@param x_scale integer Scale value for X parameter.
 ---@param y_scale integer Scale value for Y parameter.
----@param color integer Image tint color (See ::Color) <b>(optional)</b>.
+---@param color integer Image tint color (See `Color`) <b>(optional)</b>.
 drawImageExtended = function(x, y, img, x_start, y_start, width, height, rad, x_scale, y_scale, color) return 0 end, 
 ---Initialize a rescaler.
 --- Usage example:
@@ -2430,9 +2432,12 @@ initRescaler = function(x, y, x_scale, y_scale) return 0 end,
 ---```
 termRescaler = function() return 0 end, 
 }
----\defgroup Timer
 ---Module that handles system timers.
 Timer = {
+---Create a new system timer.<br>
+---@return integer result The new system timer's ID<br>
+---<b>NOTE: this timer is in resumed state by default.</b>
+new = function() return 0 end,
 ---Get a system timer time.
 --- Usage example:
 ---```
@@ -2488,43 +2493,43 @@ reset = function(timer) return 0 end,
 ---@return boolean result true if playing, false otherwise.
 isPlaying = function(timer) return false end, 
 }
----GuiTheme: Themes constants to use with ::Gui.setTheme.<br>
+---GuiTheme: Themes constants to use with `Gui.setTheme`.<br>
 ---Dark Theme.
 ---@type integer
 DARK_THEME = 0
----GuiTheme: Themes constants to use with ::Gui.setTheme.<br>
+---GuiTheme: Themes constants to use with `Gui.setTheme`.<br>
 ---Light Theme.
 ---@type integer
 LIGHT_THEME = 0
----GuiTheme: Themes constants to use with ::Gui.setTheme.<br>
+---GuiTheme: Themes constants to use with `Gui.setTheme`.<br>
 ---Classic Theme
 ---@type integer
 CLASSIC_THEME = 0
----WinFlags: Window flags to use with ::Gui.initWindow.<br>
+---WinFlags: Window flags to use with `Gui.initWindow`.<br>
 ---No flags.
 ---@type integer
 FLAG_NONE = 0
----WinFlags: Window flags to use with ::Gui.initWindow.<br>
+---WinFlags: Window flags to use with `Gui.initWindow`.<br>
 ---The window can't be collapsed.
 ---@type integer
 FLAG_NO_COLLAPSE = 0
----WinFlags: Window flags to use with ::Gui.initWindow.<br>
+---WinFlags: Window flags to use with `Gui.initWindow`.<br>
 ---The window can't be moved.
 ---@type integer
 FLAG_NO_MOVE = 0
----WinFlags: Window flags to use with ::Gui.initWindow.<br>
+---WinFlags: Window flags to use with `Gui.initWindow`.<br>
 ---The window can't be resized.
 ---@type integer
 FLAG_NO_RESIZE = 0
----WinFlags: Window flags to use with ::Gui.initWindow.<br>
+---WinFlags: Window flags to use with `Gui.initWindow`.<br>
 ---The window has no vertical scrollbar.
 ---@type integer
 FLAG_NO_SCROLLBAR = 0
----WinFlags: Window flags to use with ::Gui.initWindow.<br>
+---WinFlags: Window flags to use with `Gui.initWindow`.<br>
 ---The window doesn't show a label.
 ---@type integer
 FLAG_NO_TITLEBAR = 0
----WinFlags: Window flags to use with ::Gui.initWindow.<br>
+---WinFlags: Window flags to use with `Gui.initWindow`.<br>
 ---The window has an horizontal scrollbar.
 ---@type integer
 FLAG_HORIZONTAL_SCROLLBAR = 0
@@ -2633,7 +2638,7 @@ drawMenuItem = function(label, selected, enabled) return false end,
 ---Gui.drawText("Hello World", Color.new(255, 255, 0))
 ---```
 ---@param label string The label to show.
----@param color integer A valid color (See ::Color) <b>(optional)</b>.
+---@param color integer A valid color (See `Color`) <b>(optional)</b>.
 drawText = function(label, color) return 0 end, 
 ---Draw a greyed out text.
 --- Usage example:
@@ -2787,7 +2792,7 @@ drawListBox = function(label, index, elements) return 0 end,
 ---end
 ---```
 ---@param label string The label to show.
----@param color integer The currently picked color (See ::Color)
+---@param color integer The currently picked color (See `Color`)
 ---@param alpha boolean If true, alpha value will be pickable, not otherwise. <b>(optional)</b>.
 ---@return integer result The updated picked color.
 drawColorPicker = function(label, color, alpha) return 0 end, 
@@ -2814,7 +2819,7 @@ drawProgressbar = function(fraction, w, h) return 0 end,
 ---@param img_y integer Source image Y coordinate <b>(optional)</b>.
 ---@param img_w integer Source image width <b>(optional)</b>.
 ---@param img_h integer Source image height <b>(optional)</b>.
----@param color integer Image tint color (See ::Color) <b>(optional)</b>.
+---@param color integer Image tint color (See `Color`) <b>(optional)</b>.
 drawImage = function(img, width, height, img_x, img_y, img_w, img_h, color) return 0 end, 
 ---Set next widget position.
 --- Usage example:
@@ -2846,7 +2851,6 @@ setWidgetWidth = function(w) return 0 end,
 ---```
 resetWidgetWidth = function() return 0 end, 
 }
----\defgroup Render
 ---Module that handles 3D rendering.
 Render = {
 ---Create a vertex.
